@@ -1,0 +1,41 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=137
+END=1930
+title=Validação de compras  Teste 01: tela inicial dos produtos validação dos botões de ADICIONAR e REMOVER do carrinho
+[CHAPTER]
+TIMEBASE=1/1000
+START=2657
+END=3725
+title=Validação de compras  Teste 02: válida se é possível remover algum produto diretamente da página do carrinho
+[CHAPTER]
+TIMEBASE=1/1000
+START=3890
+END=4795
+title=Validação de compras  Teste 03: Válida se é possível alterar o filtro de pesquisa de A a Z para Z a A
+[CHAPTER]
+TIMEBASE=1/1000
+START=4758
+END=5701
+title=Validação de compras  Teste 04: Válida se é possível alterar o filtro de pesquisa do MENOR para o MAIOR
+[CHAPTER]
+TIMEBASE=1/1000
+START=5731
+END=6646
+title=Validação de compras  Teste 05: Válida se é possível alterar o filtro de pesquisa do MAIOR para o MENOR
+[CHAPTER]
+TIMEBASE=1/1000
+START=6702
+END=7562
+title=Validação de compras  Teste 07: Válida se o ícone do facebook contém um link da página de facebook da Saucelabs
+[CHAPTER]
+TIMEBASE=1/1000
+START=7572
+END=8423
+title=Validação de compras  Teste 08: Válida se o ícone do Linkedin contém um link da página de Linkedin da Saucelabs
+[CHAPTER]
+TIMEBASE=1/1000
+START=8386
+END=9276
+title=Validação de compras  Teste 09: Válida se o ícone do Tweeter contém um link da página de Tweeter da Saucelabs
