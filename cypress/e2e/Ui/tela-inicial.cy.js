@@ -1,7 +1,9 @@
 
+
 describe('Validação de compras ', () => {
     beforeEach(() => {
-        cy.visit('https://www.saucedemo.com/')
+        cy.visit('/')
+        //cy.visit('https://www.saucedemo.com/')
         cy.loginComands('standard_user', 'secret_sauce');
 
     })
@@ -32,6 +34,7 @@ describe('Validação de compras ', () => {
             .select('Name (Z to A)')
         cy.get('.select_container')
             .should('contain', 'Name (Z to A)')
+
 
 
     });
@@ -75,5 +78,25 @@ describe('Validação de compras ', () => {
 
 
     });
+
+    it('Teste 02 validação de itens adicionados no carrinho, ainda em tela inicial', ()=>{
+        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+        cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
+        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+        cy.get('.shopping_cart_link').should('have.text', '1')
+    });
+
+    it('validação de itens removidos  do carrinho', ()=>{
+        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+        cy.get('.shopping_cart_badge').should('not.exist')
+
+    });
+
+    
+
+
+
+
 
 })
