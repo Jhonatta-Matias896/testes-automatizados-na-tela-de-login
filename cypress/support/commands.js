@@ -1,5 +1,4 @@
 
-
 Cypress.Commands.add('loginComands' , (email, password) =>{
     cy.get('[data-test="username"]').type(email)
     cy.get('[data-test="password"]').type(password)
@@ -9,13 +8,13 @@ Cypress.Commands.add('loginComands' , (email, password) =>{
 });
 
 Cypress.Commands.add('cadastroComands', () =>{
-    cy.get('.buttonLinkHomeRegister').click()
-    cy.get('h1').should('be.visible', 'have.text', 'Vamos trabalhar!')
-    cy.get('[placeholder="Nome"]').type('Jhonatta Matias')
-    cy.get('[placeholder="Telefone"]').type('73982245157')
-    cy.get('[placeholder="Email"]').type('test.test@gmail.com')
-    cy.get('[type="password"]').type('12457812', {log:false})
-    cy.get('.buttonRegister').click()
+    // cy.get('.buttonLinkHomeRegister').click()
+    // cy.get('h1').should('be.visible', 'have.text', 'Vamos trabalhar!')
+    // cy.get('[placeholder="Nome"]').type(faker.name.firstName())
+    // cy.get('[placeholder="Telefone"]').type('73982245157')
+    // cy.get('[placeholder="Email"]').type(faker.internet.email())
+    // cy.get('[type="password"]').type('12457812', {log:false})
+    // cy.get('.buttonRegister').click()
 
 });
 

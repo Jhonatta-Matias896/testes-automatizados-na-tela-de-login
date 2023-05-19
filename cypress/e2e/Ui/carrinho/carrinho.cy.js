@@ -1,3 +1,5 @@
+
+
 describe('Testes referentes ao carrinho de compras ', () => {
     beforeEach(() => {
         cy.visit('/')
