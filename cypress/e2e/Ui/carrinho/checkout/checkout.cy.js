@@ -64,7 +64,7 @@ it('Teste 03: Validação do campo com CEP obrigatorio', () =>{
 
 });
 
-it.only('Teste 04: Validação do campo com CEP obrigatorio', () =>{
+it('Teste 04: Validação do campo com CEP obrigatorio', () =>{
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
     cy.get('.shopping_cart_link').click()
     cy.get('.title').should('have.text', 'Your Cart')
@@ -93,7 +93,7 @@ it('Teste 04: Validação do campo com CEP obrigatorio', () =>{
 
 });
 
-it('Teste 05: Validação da página de resumo do pedido', () =>{
+it.only('Teste 05: Validação da página de resumo do pedido', () =>{
     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
     cy.get('.shopping_cart_link').click()
     cy.get('.title').should('have.text', 'Your Cart')
@@ -109,8 +109,8 @@ it('Teste 05: Validação da página de resumo do pedido', () =>{
         const valores = [...$elementos].map(elemento => parseFloat(elemento.innerText.replace('$', '')));
         expect(valores).to.deep.equal([29.99]);
       });
-      cy.get('.summary_info > :nth-child(2)').should('have.text', 'SauceCard #31337');
-      cy.get('.summary_info > :nth-child(4)').should('have.text', 'Free Pony Express Delivery!');
+      cy.get('.summary_info > :nth-child(2)').should('have.text', Cypress.env('cartao') );
+      cy.get('.summary_info > :nth-child(4)').should('have.text', Cypress.env('entregador'));
       cy.get('.summary_subtotal_label').should('have.text', 'Item total: $29.99');
       cy.get('.summary_tax_label').should('have.text', 'Tax: $2.40')
       cy.get('.summary_total_label').should('have.text', 'Total: $32.39')
