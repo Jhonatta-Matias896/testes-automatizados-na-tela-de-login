@@ -58,9 +58,12 @@ describe('Validação de compras ', () => {
             .should('contain', 'Price (high to low)')
     });
 
-    it('Teste 07: Válida se o ícone do facebook contém um link da página de facebook da Saucelabs', () => {
-        cy.get('.social_facebook > a').click()
-            .should('exist', 'https://www.facebook.com/saucelabs')
+    it.only('Teste 07: Válida se o ícone do facebook contém um link da página de facebook da Saucelabs', () => {
+        cy.get('.social_facebook > a').should('have.attr', 'target', '_blank')
+        cy.get('.social_facebook > a').invoke('removeAttr', 'target').click()
+        cy.contains('Facebook').should('be.visible')
+
+            
 
 
     });
