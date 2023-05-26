@@ -1,8 +1,12 @@
+//const { ELEMENTS } = require('./loginElements');
+
+const elemento = require ('./loginElements').ELEMENTS
+
 
 Cypress.Commands.add('loginComands' , (email, password) =>{
-    cy.get('[data-test="username"]').type(email)
-    cy.get('[data-test="password"]').type(password)
-    cy.get('[data-test="login-button"]').click()
+    cy.get(elemento.campoUserName).type(email)
+    cy.get(elemento.campoPassWord).type(password)
+    cy.get(elemento.btnLogin).click()
     //cy.get('.app_logo').should('have.text', 'Swag Labs')
 
 });

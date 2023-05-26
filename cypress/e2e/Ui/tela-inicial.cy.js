@@ -1,6 +1,7 @@
 //https://automationexercise.com/
 
 
+
 describe('Validação de compras ', () => {
     beforeEach(() => {
         cy.visit('/')
@@ -9,8 +10,7 @@ describe('Validação de compras ', () => {
 
     })
 
-    it('Teste 01: tela inicial dos produtos validação dos botões de ADICIONAR e REMOVER do carrinho', () => {
-
+    it.only('Teste 01: tela inicial dos produtos validação dos botões de ADICIONAR e REMOVER do carrinho', () => {
 
         cy.adicionarUmProduto();
         cy.get('[data-test="remove-sauce-labs-backpack"]').click()
@@ -58,7 +58,7 @@ describe('Validação de compras ', () => {
             .should('contain', 'Price (high to low)')
     });
 
-    it.only('Teste 07: Válida se o ícone do facebook contém um link da página de facebook da Saucelabs', () => {
+    it('Teste 07: Válida se o ícone do facebook contém um link da página de facebook da Saucelabs', () => {
         cy.get('.social_facebook > a').should('have.attr', 'target', '_blank')
         cy.get('.social_facebook > a').invoke('removeAttr', 'target').click()
         cy.contains('Facebook').should('be.visible')
