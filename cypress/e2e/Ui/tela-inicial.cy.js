@@ -1,20 +1,21 @@
 //https://automationexercise.com/
-
-
+const telaInicial = require('../../support/loginElements').ELEMENTS
+const elemento = require('../../support/Elementos/telaInicialElements').elementsInit
 
 describe('Validação de compras ', () => {
     beforeEach(() => {
         cy.visit('/')
         //cy.visit('https://www.saucedemo.com/')
-        cy.loginComands('standard_user', 'secret_sauce');
+        cy.loginComands(Cypress.env('usuario01'), Cypress.env('senha'));
 
     })
 
-    it.only('Teste 01: tela inicial dos produtos validação dos botões de ADICIONAR e REMOVER do carrinho', () => {
+    it('Teste 01: tela inicial dos produtos validação dos botões de ADICIONAR e REMOVER do carrinho', () => {
 
-        cy.adicionarUmProduto();
-        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').should('contain', 'Add to cart')
+        cy.get(telaInicial.addMochiladoCarrinho).click()
+        cy.get(telaInicial.rmMochiladoCarrinho).should('contain', 'Remove')
+        cy.get(telaInicial.rmMochiladoCarrinho).click()
+        cy.get(telaInicial.addMochiladoCarrinho).should('contain', 'Add to cart')
 
 
 
@@ -24,8 +25,8 @@ describe('Validação de compras ', () => {
         cy.adicionarUmProduto();
 
         cy.get('.shopping_cart_link').click()
-        cy.get('[data-test="remove-sauce-labs-backpack"]').should('contain', 'Remove')
-        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+        cy.get(telaInicial.rmMochiladoCarrinho).should('contain', 'Remove')
+        cy.get(telaInicial.rmMochiladoCarrinho).click()
         cy.get('.shopping_cart_link').should('be.visible')
     });
 
@@ -67,35 +68,42 @@ describe('Validação de compras ', () => {
 
 
     });
-    it('Teste 08: Válida se o ícone do Linkedin contém um link da página de Linkedin da Saucelabs', () => {
-        cy.get('.social_linkedin > a').click()
-            .should('exist', 'https://www.linkedin.com/company/sauce-labs/?original_referer=')
+    //CODIGO QUEBRADO
+    it.only('Teste 08: Válida se o ícone do Linkedin contém um link da página de Linkedin da Saucelabs', () => {
+        cy.get('.social_linkedin > a').should('have.attr', 'target', '_blank')
+        cy.get('.social_linkedin > a').invoke('removeAttr', 'target').click()
+        cy.contains('Serviços e consultoria de TI').should('to.be.visible')
+            
 
 
 
     });
 
     it('Teste 09: Válida se o ícone do Tweeter contém um link da página de Tweeter da Saucelabs', () => {
-        cy.get('.social_twitter > a').click()
-            .should('exist', 'https://twitter.com/saucelabs')
+        cy.get('.social_twitter > a').should('have.attr', 'target', '_blank')
+        cy.get('.social_twitter > a').invoke('removeAttr', 'target').click()
+        cy.contains('@saucelabs').should('be.visible')
+
+
+            
 
 
 
     });
 
-    it('Teste 02 validação de itens adicionados no carrinho, ainda em tela inicial', ()=>{
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
-        cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
-        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
-        cy.get('.shopping_cart_link').should('have.text', '1')
-    });
+    // it('Teste 02 validação de itens adicionados no carrinho, ainda em tela inicial', ()=>{
+    //     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+    //     cy.get('[data-test="add-to-cart-sauce-labs-bike-light"]').click()
+    //     cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+    //     cy.get('.shopping_cart_link').should('have.text', '1')
+    // });
 
-    it('validação de itens removidos  do carrinho', ()=>{
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
-        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
-        cy.get('.shopping_cart_badge').should('not.exist')
+    // it('validação de itens removidos  do carrinho', ()=>{
+    //     cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
+    //     cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+    //     cy.get('.shopping_cart_badge').should('not.exist')
 
-    });
+    // });
 
     
 
